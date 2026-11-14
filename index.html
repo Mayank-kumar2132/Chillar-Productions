@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chillar Productions — Ad Films, Music Videos &amp; Brand Stories</title>
+<meta name="description" content="Chillar Productions is a film production house making ad films, music videos and short films. We find your brand's heartbeat, film it, and make people feel it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&family=Teko:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050505;
+  --bg-2:#0c0c0c;
+  --card:#111111;
+  --line:rgba(255,255,255,.09);
+  --text:#F5F2EC;
+  --muted:#A19C93;
+  --dim:#6F6A62;
+  --amber:#F2A541;
+  --copper:#C2581C;
+  --ember:#7A2E0E;
+  --radius:22px;
+  --sans:"DM Sans",system-ui,sans-serif;
+  --serif:"Instrument Serif",Georgia,serif;
+  --deva:"Teko",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+em,.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--amber);box-shadow:0 0 14px var(--amber)}
+.h2{font-size:clamp(40px,5.6vw,76px);line-height:1.02;font-weight:600;letter-spacing:-.03em;margin:18px 0 0}
+.h2 em{font-size:1.08em;color:#fff}
+.lead{font-size:18px;line-height:1.65;color:var(--muted);max-width:560px}
+
+/* grain */
+body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:100;opacity:.06;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  animation:grain 1.2s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;border:0;cursor:pointer;font-family:var(--sans);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,background .3s}
+.btn-primary{background:linear-gradient(180deg,#ffbf63,var(--amber) 55%,#d98a25);color:#140a02;box-shadow:0 0 0 1px rgba(255,200,120,.4) inset,0 10px 40px -10px rgba(242,165,65,.7)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(255,200,120,.5) inset,0 16px 50px -8px rgba(242,165,65,.85)}
+.btn-ghost{background:rgba(255,255,255,.04);color:var(--text);box-shadow:0 0 0 1px var(--line) inset;backdrop-filter:blur(8px)}
+.btn-ghost:hover{background:rgba(255,255,255,.08);transform:translateY(-2px)}
+.btn svg{width:18px;height:18px}
+
+/* nav */
+.nav{position:fixed;top:14px;left:0;right:0;z-index:50;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.nav.hide{transform:translateY(-120%)}
+.nav-inner{max-width:1240px;margin:0 auto;padding:0 20px}
+.nav-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 10px 10px 20px;border-radius:999px;background:rgba(12,12,12,.62);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);box-shadow:0 0 0 1px var(--line) inset}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo .mini-coin{width:30px;height:30px}
+.logo b{font-family:var(--deva);font-weight:700;font-size:30px;line-height:.8;padding-top:5px}
+.logo span{font-family:var(--deva);font-weight:500;font-size:17px;letter-spacing:.22em;line-height:1;padding-top:3px;color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:6px}
+.nav-links a.l{font-size:15px;text-decoration:none;color:var(--muted);padding:10px 14px;border-radius:999px;transition:color .2s,background .2s}
+.nav-links a.l:hover{color:#fff;background:rgba(255,255,255,.06)}
+.nav-links .btn{min-height:44px;padding:0 20px;font-size:15px}
+@media (max-width:720px){.nav-links a.l{display:none}.logo span{display:none}}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:140px 0 90px;overflow:hidden;isolation:isolate}
+.hero-glow{position:absolute;inset:0;z-index:-2;
+  background:radial-gradient(60% 55% at 50% -5%,rgba(194,88,28,.55),transparent 70%),radial-gradient(40% 40% at 85% 30%,rgba(242,165,65,.14),transparent 70%),var(--bg)}
+.bars{position:absolute;inset:0;z-index:-1;display:grid;grid-template-columns:repeat(12,1fr);opacity:.55;mask-image:linear-gradient(180deg,#000 0%,#000 55%,transparent 95%);-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 55%,transparent 95%)}
+.bars i{display:block;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,140,50,.06) 60%,transparent);border-right:1px solid rgba(255,255,255,.035);transform-origin:top;animation:bar 6s ease-in-out infinite alternate}
+.bars i:nth-child(odd){animation-delay:-2s;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(255,140,50,.03) 70%,transparent)}
+.bars i:nth-child(3n){animation-delay:-4s}
+@keyframes bar{from{transform:scaleY(.82)}to{transform:scaleY(1)}}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:48px;align-items:center}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}.coin-stage{order:-1}}
+.hero h1{font-size:clamp(52px,8.4vw,124px);line-height:.95;letter-spacing:-.045em;font-weight:600;margin:22px 0 0}
+.hero h1 em{color:#fff;letter-spacing:-.02em;font-size:1.06em;background:linear-gradient(180deg,#fff 30%,#ffc983);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;padding-right:.08em}
+.hero .sub{font-size:clamp(20px,2.2vw,26px);line-height:1.4;color:#d8d3ca;margin:28px 0 0;max-width:620px}
+.hero .sub b{color:#fff;font-weight:600}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:22px;margin-top:44px;color:var(--dim);font-size:14px}
+.hero-meta span{display:inline-flex;align-items:center;gap:8px}
+.hero-meta span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--dim)}
+.blur-in{opacity:0;filter:blur(14px);transform:translateY(24px);animation:blurIn 1.1s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes blurIn{to{opacity:1;filter:blur(0);transform:none}}
+.w{display:inline-block}
+.scroll-hint{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.scroll-hint i{width:1px;height:46px;background:linear-gradient(var(--amber),transparent);animation:drip 2s ease-in-out infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* coin */
+.coin-stage{display:flex;justify-content:center;perspective:1200px}
+.coin-wrap{position:relative;width:min(380px,72vw);aspect-ratio:1;will-change:transform}
+.coin-wrap::before{content:"";position:absolute;inset:-18%;border-radius:50%;background:radial-gradient(circle,rgba(242,165,65,.35),transparent 62%);filter:blur(30px);animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.55;transform:scale(.92)}}
+.coin{position:relative;width:100%;height:100%;animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-14px)}}
+
+/* marquee */
+.marquee{position:relative;overflow:hidden;border-block:1px solid var(--line);padding:26px 0;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.track{display:flex;gap:64px;width:max-content;animation:marq 38s linear infinite}
+.marquee.rev .track{animation-direction:reverse;animation-duration:44s}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes marq{to{transform:translateX(-50%)}}
+.track span{display:inline-flex;align-items:center;gap:64px;white-space:nowrap;font-size:clamp(26px,3.2vw,42px);font-weight:600;letter-spacing:-.02em;color:#d9d4cb}
+.track span:nth-child(even){font-family:var(--serif);font-style:italic;font-weight:400;color:var(--muted)}
+.track span::after{content:"";width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#b9b3a8 45%,#6d675d);box-shadow:0 0 18px rgba(242,165,65,.5)}
+
+/* sections */
+section{position:relative}
+.sec{padding:140px 0}
+@media (max-width:720px){.sec{padding:96px 0}}
+.reveal{opacity:0;filter:blur(12px);transform:translateY(46px);transition:opacity 1s cubic-bezier(.2,.8,.2,1),filter 1s cubic-bezier(.2,.8,.2,1),transform 1s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;filter:blur(0);transform:none}
+
+/* manifesto */
+.manifesto p.big{font-size:clamp(30px,4.2vw,58px);line-height:1.12;letter-spacing:-.03em;font-weight:500;margin:28px 0 0;max-width:1100px}
+.manifesto p.big .mw{color:rgba(245,242,236,.14);transition:color .25s}
+.manifesto p.big .mw.on{color:var(--text)}
+.manifesto p.big .mw.it{font-family:var(--serif);font-style:italic;font-weight:400}
+.manifesto p.big .mw.it.on{color:#ffcf8f}
+.manifesto-foot{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px;margin-top:64px;align-items:end}
+@media (max-width:800px){.manifesto-foot{grid-template-columns:1fr}}
+
+/* pillars */
+.pillars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:64px}
+@media (max-width:1000px){.pillars{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.pillars{grid-template-columns:1fr}}
+.glow-card{position:relative;border-radius:var(--radius);background:linear-gradient(180deg,#141414,#0b0b0b);box-shadow:0 0 0 1px var(--line) inset;overflow:hidden;isolation:isolate}
+.glow-card::before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .4s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(242,165,65,.18),transparent 45%)}
+.glow-card:hover::before{opacity:1}
+.glow-card::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:radial-gradient(300px circle at var(--mx,50%) var(--my,0%),rgba(255,190,110,.65),transparent 40%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .4s}
+.glow-card:hover::after{opacity:1}
+.pillar{padding:30px 26px 30px;min-height:290px;display:flex;flex-direction:column;justify-content:space-between;gap:28px}
+.pillar .ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(180deg,rgba(242,165,65,.22),rgba(194,88,28,.08));box-shadow:0 0 0 1px rgba(242,165,65,.25) inset}
+.pillar .ico svg{width:24px;height:24px;stroke:#ffc983}
+.pillar h3{font-size:26px;line-height:1.1;letter-spacing:-.02em;font-weight:600;margin:0}
+.pillar p{margin:10px 0 0;color:var(--muted);font-size:15.5px;line-height:1.55}
+.pillar .n{font-family:var(--serif);font-style:italic;color:var(--dim);font-size:22px}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-radius:var(--radius);box-shadow:0 0 0 1px var(--line) inset;overflow:hidden;margin-top:18px}
+@media (max-width:800px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.stat{padding:34px 28px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+@media (max-width:800px){.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+.stat .v{font-size:clamp(44px,5vw,64px);font-weight:600;letter-spacing:-.04em;line-height:1;background:linear-gradient(180deg,#fff,#ffc983);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat .k{margin-top:10px;color:var(--muted);font-size:15px}
+
+/* clients */
+.clients-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px}
+.logo-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border-radius:var(--radius);overflow:hidden;margin-top:56px;box-shadow:0 0 0 1px var(--line)}
+@media (max-width:900px){.logo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.logo-cell{background:var(--bg);min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:20px;text-align:center;transition:background .35s}
+.logo-cell:hover{background:#0f0d0a}
+.logo-cell .nm{font-size:22px;font-weight:600;letter-spacing:-.02em;color:#e9e4db;transition:color .3s}
+.logo-cell .nm.serif{font-family:var(--serif);font-style:italic;font-weight:400;font-size:27px}
+.logo-cell .nm.caps{text-transform:uppercase;letter-spacing:.14em;font-size:17px}
+.logo-cell .tg{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.logo-cell:hover .nm{color:#ffcf8f}
+.logo-cell.add .nm{color:var(--dim);font-size:16px;font-weight:500}
+
+/* case studies */
+.cases{margin-top:72px;display:flex;flex-direction:column;gap:28px}
+.case{position:sticky;top:96px;transform-origin:top center;will-change:transform}
+.case .glow-card{padding:26px;background:linear-gradient(160deg,#171310 0%,#0c0c0c 45%,#090909 100%)}
+.case-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:36px}
+@media (max-width:960px){.case-grid{grid-template-columns:1fr}.case{position:relative;top:auto}}
+.case-info{display:flex;flex-direction:column;gap:18px;padding:14px 6px 6px}
+.case-tag{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:12.5px;letter-spacing:.06em;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.05);box-shadow:0 0 0 1px var(--line) inset;color:#d6d0c6}
+.chip.hot{background:rgba(242,165,65,.12);box-shadow:0 0 0 1px rgba(242,165,65,.35) inset;color:#ffcf8f}
+.case h3{font-size:clamp(34px,3.6vw,52px);line-height:1;letter-spacing:-.035em;font-weight:600;margin:4px 0 0}
+.case h3 em{color:#ffcf8f}
+.case p{margin:0;color:var(--muted);font-size:16.5px;line-height:1.6}
+.case-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:auto;padding-top:10px}
+.cm{border-radius:16px;padding:16px 16px;background:rgba(255,255,255,.03);box-shadow:0 0 0 1px var(--line) inset}
+.cm b{display:block;font-size:30px;letter-spacing:-.03em;font-weight:600;line-height:1}
+.cm span{display:block;margin-top:6px;font-size:13px;color:var(--muted)}
+.films{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-content:start}
+.films.three .film:first-child{grid-column:1 / -1;aspect-ratio:21/9}
+@media (max-width:560px){.films{grid-template-columns:1fr}}
+.film{position:relative;display:block;border-radius:16px;overflow:hidden;aspect-ratio:16/9;text-decoration:none;isolation:isolate;box-shadow:0 0 0 1px var(--line) inset;background:var(--fb,linear-gradient(135deg,#3a1a08,#0c0c0c))}
+.film img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.film::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(70% 90% at 80% 0%,rgba(255,180,90,.25),transparent 60%),repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 2px,transparent 2px 7px)}
+.film::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 30%,rgba(0,0,0,.85));pointer-events:none}
+.film:hover img{transform:scale(1.06)}
+.film .meta{position:absolute;left:16px;right:16px;bottom:14px;z-index:2}
+.film .meta small{display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#ffcf8f;margin-bottom:4px}
+.film .meta strong{display:block;font-size:17px;line-height:1.2;font-weight:600;color:#fff}
+.film .play{position:absolute;top:14px;right:14px;z-index:2;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 0 0 1px rgba(255,255,255,.2) inset;transition:transform .35s,background .35s}
+.film:hover .play{transform:scale(1.12);background:var(--amber)}
+.film:hover .play svg{fill:#140a02}
+.film .play svg{width:16px;height:16px;fill:#fff;margin-left:2px}
+.feature-cta{margin-top:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:18px;min-height:300px;border-radius:var(--radius);padding:48px 24px;text-decoration:none;position:relative;overflow:hidden;
+  background:radial-gradient(60% 120% at 50% 120%,rgba(194,88,28,.45),transparent 70%),#090909;box-shadow:0 0 0 1px rgba(242,165,65,.28) inset}
+.feature-cta .big{font-size:clamp(36px,5vw,68px);line-height:1;letter-spacing:-.035em;font-weight:600}
+.feature-cta .big em{color:#ffcf8f}
+.dash{position:absolute;inset:14px;border-radius:16px;border:1.5px dashed rgba(242,165,65,.28);pointer-events:none}
+
+/* contact */
+.contact{overflow:hidden;isolation:isolate}
+.contact::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(55% 45% at 15% 30%,rgba(194,88,28,.28),transparent 70%),radial-gradient(40% 40% at 90% 90%,rgba(242,165,65,.10),transparent 70%)}
+.contact-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:56px;align-items:start}
+@media (max-width:960px){.contact-grid{grid-template-columns:1fr}}
+.reach{display:flex;flex-direction:column;gap:12px;margin-top:40px}
+.reach a,.reach div.r{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;text-decoration:none;background:rgba(255,255,255,.03);box-shadow:0 0 0 1px var(--line) inset;transition:background .3s,transform .3s}
+.reach a:hover{background:rgba(255,255,255,.06);transform:translateX(4px)}
+.reach .ri{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(242,165,65,.12);flex:none}
+.reach .ri svg{width:19px;height:19px;stroke:#ffc983;fill:none}
+.reach small{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.reach b{display:block;font-size:16.5px;font-weight:500;word-break:break-all}
+.form-card{padding:36px;border-radius:28px;background:linear-gradient(180deg,rgba(24,20,16,.92),rgba(12,12,12,.92));box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 40px 120px -40px rgba(194,88,28,.55)}
+@media (max-width:560px){.form-card{padding:24px}}
+.form-card h3{margin:0;font-size:30px;letter-spacing:-.025em;font-weight:600}
+.form-card h3 em{color:#ffcf8f}
+.form-card .hint{margin:8px 0 0;color:var(--muted);font-size:15px}
+form{display:flex;flex-direction:column;gap:18px;margin-top:28px}
+.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:560px){.row{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:8px;font-size:13.5px;font-weight:500;color:#d6d0c6}
+.field input,.field textarea{width:100%;font-family:var(--sans);font-size:16px;color:var(--text);background:rgba(255,255,255,.035);border:0;border-radius:14px;padding:15px 16px;box-shadow:0 0 0 1px var(--line) inset;transition:box-shadow .25s,background .25s;outline:none}
+.field textarea{min-height:120px;resize:vertical;line-height:1.5}
+.field input::placeholder,.field textarea::placeholder{color:#8a857c}
+.field input:focus,.field textarea:focus{background:rgba(255,255,255,.055);box-shadow:0 0 0 1px rgba(242,165,65,.75) inset,0 0 0 4px rgba(242,165,65,.14)}
+.field .err{display:none;color:#ff9b7a;font-size:12.5px;font-weight:400}
+.field.bad input{box-shadow:0 0 0 1px #ff8a65 inset}
+.field.bad .err{display:block}
+fieldset{border:0;margin:0;padding:0}
+legend{font-size:13.5px;font-weight:500;color:#d6d0c6;padding:0;margin-bottom:10px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{min-height:44px;padding:0 16px;border-radius:999px;border:0;cursor:pointer;font-family:var(--sans);font-size:14.5px;color:#d6d0c6;background:rgba(255,255,255,.04);box-shadow:0 0 0 1px var(--line) inset;transition:all .25s}
+.pill:hover{background:rgba(255,255,255,.08)}
+.pill[aria-pressed="true"]{background:rgba(242,165,65,.16);color:#ffd59c;box-shadow:0 0 0 1px rgba(242,165,65,.6) inset}
+.submit{width:100%;min-height:58px;font-size:17px;margin-top:6px}
+.note{font-size:12.5px;color:var(--dim);text-align:center;margin:0}
+.success{display:none;flex-direction:column;align-items:center;text-align:center;gap:14px;padding:50px 10px}
+.success.show{display:flex;animation:blurIn .9s cubic-bezier(.2,.8,.2,1) forwards}
+.success .tick{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#ffd69c,var(--amber) 55%,#b86a14);box-shadow:0 0 50px rgba(242,165,65,.6)}
+.success .tick svg{width:34px;height:34px;stroke:#140a02;fill:none;stroke-width:2.5}
+.success h4{margin:6px 0 0;font-size:34px;letter-spacing:-.03em;font-weight:600}
+.success p{margin:0;color:var(--muted);max-width:380px;line-height:1.6}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:70px 0 34px;overflow:hidden}
+.foot-word{font-family:var(--deva);font-weight:700;font-size:clamp(90px,19vw,280px);line-height:.78;letter-spacing:-.01em;text-align:center;background:linear-gradient(180deg,#2a2622,#0a0a0a 85%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;user-select:none;padding-top:.12em}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:18px;margin-top:36px;color:var(--dim);font-size:14px}
+.foot-row nav{display:flex;gap:22px}
+.foot-row nav a{text-decoration:none;color:var(--muted)}
+.foot-row nav a:hover{color:#fff}
+.motto{font-family:var(--deva);font-size:26px;color:#cfc8bc;letter-spacing:.04em}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal,.blur-in{opacity:1!important;filter:none!important;transform:none!important}
+  .manifesto p.big .mw{color:var(--text)}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="nav-bar">
+      <a class="logo" href="#top" aria-label="Chillar Productions home">
+        <svg class="mini-coin" viewBox="0 0 100 100" aria-hidden="true"><defs><radialGradient id="mc" cx="35%" cy="30%"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#bdb6aa"/><stop offset="1" stop-color="#5f594f"/></radialGradient></defs><circle cx="50" cy="50" r="48" fill="url(#mc)"/><circle cx="50" cy="50" r="40" fill="none" stroke="#7d776c" stroke-width="2" stroke-dasharray="2 3"/><text x="50" y="68" text-anchor="middle" font-family="Teko" font-weight="700" font-size="52" fill="#2b2824">1</text></svg>
+        <b>चिल्लर</b><span>PRODUCTIONS</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="l" href="#about">About</a>
+        <a class="l" href="#clients">Clients</a>
+        <a class="l" href="#work">Work</a>
+        <a class="btn btn-primary" href="#contact">Let’s talk</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ 1. HERO / INTRO ============ -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow blur-in" style="animation-delay:.1s">Ad films · Music videos · Short films</div>
+      <h1 aria-label="Every brand has a heartbeat.">
+        <span class="w blur-in" style="animation-delay:.2s">Every</span>
+        <span class="w blur-in" style="animation-delay:.3s">brand</span>
+        <span class="w blur-in" style="animation-delay:.4s">has&nbsp;a</span><br>
+        <em class="w blur-in" style="animation-delay:.55s">heartbeat.</em>
+      </h1>
+      <p class="sub blur-in" style="animation-delay:.8s"><b>We find it. We film it.</b> We make people feel it.</p>
+      <div class="hero-cta blur-in" style="animation-delay:1s">
+        <a class="btn btn-primary" href="#contact">Start a project
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#work">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>Watch our work</a>
+      </div>
+      <div class="hero-meta blur-in" style="animation-delay:1.15s"><span>Gaupalam Vedic</span><span>Warner Music India</span><span>Def Jam India</span></div>
+    </div>
+    <div class="coin-stage blur-in" style="animation-delay:.5s">
+      <div class="coin-wrap" id="coin">
+        <svg class="coin" viewBox="0 0 400 400" role="img" aria-label="Chillar Productions one-rupee coin mark">
+          <defs>
+            <radialGradient id="cf" cx="36%" cy="30%" r="80%"><stop offset="0" stop-color="#f4f1ea"/><stop offset=".35" stop-color="#c9c3b8"/><stop offset=".75" stop-color="#8b857a"/><stop offset="1" stop-color="#4e493f"/></radialGradient>
+            <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff8e8"/><stop offset=".45" stop-color="#8f897e"/><stop offset=".7" stop-color="#3f3a33"/><stop offset="1" stop-color="#ffcf8f"/></linearGradient>
+            <radialGradient id="shine" cx="30%" cy="22%" r="50%"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+            <path id="arcTop" d="M64,200 A136,136 0 0 1 336,200"/>
+            <path id="arcBot" d="M52,200 A148,148 0 0 0 348,200"/>
+          </defs>
+          <circle cx="200" cy="200" r="196" fill="url(#rim)"/>
+          <circle cx="200" cy="200" r="182" fill="url(#cf)"/>
+          <circle cx="200" cy="200" r="168" fill="none" stroke="#6f695f" stroke-width="2.5" stroke-dasharray="3 6"/>
+          <circle cx="200" cy="200" r="158" fill="none" stroke="#a49e93" stroke-width="1"/>
+          <text font-family="Teko" font-weight="600" font-size="40" fill="#3a362f" letter-spacing="4"><textPath href="#arcTop" startOffset="50%" text-anchor="middle">चिल्लर</textPath></text>
+          <text font-family="Teko" font-weight="600" font-size="24" fill="#3a362f" letter-spacing="7" dominant-baseline="hanging"><textPath href="#arcBot" startOffset="50%" text-anchor="middle">PRODUCTIONS</textPath></text>
+          <g fill="none" stroke="#5a554c" stroke-width="3" stroke-linecap="round">
+            <path d="M118 262c18-34 22-80 16-118"/><path d="M128 238c-14-4-22-14-24-26M132 212c-14-4-22-14-24-26M134 186c-14-4-21-14-22-26M134 160c-13-5-19-15-19-27"/><path d="M128 238c10-8 14-20 12-32M132 212c10-8 14-20 12-32M134 186c9-9 12-20 10-32"/>
+            <path d="M282 262c-18-34-22-80-16-118"/><path d="M272 238c14-4 22-14 24-26M268 212c14-4 22-14 24-26M266 186c14-4 21-14 22-26M266 160c13-5 19-15 19-27"/><path d="M272 238c-10-8-14-20-12-32M268 212c-10-8-14-20-12-32M266 186c-9-9-12-20-10-32"/>
+          </g>
+          <text x="200" y="262" text-anchor="middle" font-family="Teko" font-weight="700" font-size="190" fill="#34302a">1</text>
+                    <circle cx="200" cy="200" r="182" fill="url(#shine)"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">Scroll<i></i></div>
+</section>
+
+<!-- marquee -->
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Ad Films</span><span>Music Videos</span><span>Short Films</span><span>Brand Stories</span><span>Teasers &amp; Trailers</span><span>Product Films</span>
+    <span>Ad Films</span><span>Music Videos</span><span>Short Films</span><span>Brand Stories</span><span>Teasers &amp; Trailers</span><span>Product Films</span>
+  </div>
+</div>
+
+<!-- manifesto -->
+<section class="sec manifesto" id="about">
+  <div class="wrap">
+    <div class="eyebrow reveal">Who we are</div>
+    <p class="big" id="manifesto">The difference between a <i>video</i> and a <i>story</i> is the difference between being <i>seen</i> and being <i>remembered.</i></p>
+    <div class="manifesto-foot">
+      <p class="lead reveal">In a digital landscape crowded with noise, your brand’s greatest asset isn’t just your product. It’s the narrative behind it. Whether it’s the quiet, rhythmic pour of a premium FMCG brand or the high-stakes intensity of a luxury fitness transformation, there is a story waiting to be told.</p>
+      <p class="lead reveal" style="color:#e4ded4;font-size:22px">We are the <em style="color:#ffcf8f;font-size:1.15em">architects</em> of that story.</p>
+    </div>
+
+    <div class="pillars">
+      <article class="glow-card pillar reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg></div>
+        <div><h3>Ad Films</h3><p>Story-first commercials that make people feel your product, not just see it.</p></div>
+        <span class="n">01</span>
+      </article>
+      <article class="glow-card pillar reveal" style="transition-delay:.08s">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+        <div><h3>Music Videos</h3><p>Visual worlds for artists and labels, from concept to final grade.</p></div>
+        <span class="n">02</span>
+      </article>
+      <article class="glow-card pillar reveal" style="transition-delay:.16s">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11v9h16v-9"/><path d="M4 11l16-4-1-4L3 7z"/><path d="M8 6l2 4M13 5l2 4"/></svg></div>
+        <div><h3>Short Films &amp; Trailers</h3><p>Narrative films, teasers and trailers shot with a cinematic eye.</p></div>
+        <span class="n">03</span>
+      </article>
+      <article class="glow-card pillar reveal" style="transition-delay:.24s">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
+        <div><h3>Brand Content</h3><p>Reels and social-first content that keeps the story going every week.</p></div>
+        <span class="n">04</span>
+      </article>
+    </div>
+
+    <div class="stats reveal">
+      <div class="stat"><div class="v" data-count="10" data-suffix="+">0</div><div class="k">Films &amp; videos shipped</div></div>
+      <div class="stat"><div class="v">[XX]M</div><div class="k">Views across platforms</div></div>
+      <div class="stat"><div class="v">[XX]+</div><div class="k">Brands &amp; artists</div></div>
+      <div class="stat"><div class="v">[XX]</div><div class="k">Years behind the camera</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. CLIENTS + CASE STUDIES ============ -->
+<section class="sec" id="clients" style="padding-top:40px">
+  <div class="wrap">
+    <div class="clients-head">
+      <div>
+        <div class="eyebrow reveal">Clients &amp; collaborators</div>
+        <h2 class="h2 reveal">Trusted by brands,<br>labels &amp; <em>artists</em></h2>
+      </div>
+      <p class="lead reveal" style="max-width:380px">From dairy brands to India’s biggest music labels, here are some of the names we’ve made films with.</p>
+    </div>
+    <div class="logo-grid reveal">
+      <div class="logo-cell"><span class="nm caps">Gaupalam Vedic</span><span class="tg">Dairy · Ad films</span></div>
+      <div class="logo-cell"><span class="nm">Warner Music India</span><span class="tg">Music label</span></div>
+      <div class="logo-cell"><span class="nm caps">Def Jam India</span><span class="tg">Music label</span></div>
+      <div class="logo-cell"><span class="nm serif">Chaar Diwaari</span><span class="tg">Artist</span></div>
+      <div class="logo-cell"><span class="nm serif">Vasu Raina</span><span class="tg">Artist</span></div>
+      <div class="logo-cell"><span class="nm caps">Nanku</span><span class="tg">Artist</span></div>
+      <div class="logo-cell"><span class="nm">Nishchay Thakur</span><span class="tg">Filmmaker</span></div>
+      <div class="logo-cell"><span class="nm serif">Shubh Sharma</span><span class="tg">Artist</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee rev" aria-hidden="true">
+  <div class="track">
+    <span>Gaupalam Vedic</span><span>Warner Music India</span><span>Def Jam India</span><span>Chaar Diwaari</span><span>Vasu Raina</span><span>Nishchay Thakur</span><span>Shubh Sharma</span><span>Nanku</span>
+    <span>Gaupalam Vedic</span><span>Warner Music India</span><span>Def Jam India</span><span>Chaar Diwaari</span><span>Vasu Raina</span><span>Nishchay Thakur</span><span>Shubh Sharma</span><span>Nanku</span>
+  </div>
+</div>
+
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="eyebrow reveal">Case studies</div>
+    <h2 class="h2 reveal">Show, don’t <em>tell.</em></h2>
+    <p class="lead reveal" style="margin-top:20px">As a wise man once said. Here’s the work, so you can judge for yourself.</p>
+
+    <div class="cases" id="cases">
+
+      <!-- CASE 1 -->
+      <article class="case">
+        <div class="glow-card">
+          <div class="case-grid">
+            <div class="case-info">
+              <div class="case-tag"><span class="chip hot">Case 01</span><span class="chip">FMCG · Dairy</span><span class="chip">Ad film series</span></div>
+              <h3>Gaupalam Vedic: <em>Milk that tells a story</em></h3>
+              <p>A series of three ad films built around the moments milk is part of: a mother’s love, a good daily habit and the gift of health. Warm, human stories instead of product shots.</p>
+              <div class="case-metrics">
+                <div class="cm"><b>3</b><span>Ad films</span></div>
+                <div class="cm"><b>[XX]</b><span>Total views</span></div>
+                <div class="cm"><b>[XX]%</b><span>[Result metric]</span></div>
+              </div>
+            </div>
+            <div class="films three">
+              <a class="film" href="https://www.youtube.com/watch?v=eeAu5h_GtdU" target="_blank" rel="noopener" style="--fb:linear-gradient(135deg,#5a3410,#1a0f06 70%)">
+                <img src="https://i.ytimg.com/vi/eeAu5h_GtdU/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">
+                <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+                <span class="meta"><small>Ad film</small><strong>Gift of Health</strong></span>
+              </a>
+              <a class="film" href="https://www.youtube.com/watch?v=4VyA3SQIzGk" target="_blank" rel="noopener" style="--fb:linear-gradient(135deg,#6b2a1a,#140806 70%)">
+                <img src="https://i.ytimg.com/vi/4VyA3SQIzGk/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">
+                <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+                <span class="meta"><small>Ad film</small><strong>Mother’s Day</strong></span>
+              </a>
+              <a class="film" href="https://www.youtube.com/watch?v=yMgPabMvjZU" target="_blank" rel="noopener" style="--fb:linear-gradient(135deg,#4d4012,#0f0d05 70%)">
+                <img src="https://i.ytimg.com/vi/yMgPabMvjZU/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">
+                <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+                <span class="meta"><small>Ad film</small><strong>Ek Achchi Adat</strong></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CASE 2 -->
+      <article class="case">
+        <div class="glow-card">
+          <div class="case-grid">
+            <div class="case-info">
+              <div class="case-tag"><span class="chip hot">Case 02</span><span class="chip">Music</span><span class="chip">Labels &amp; artists</span></div>
+              <h3>Music videos for <em>India’s labels</em></h3>
+              <p>We’ve been part of music videos for Warner Music India, Def Jam India and independent artists, giving each track a look and feel of its own.</p>
+              <div class="case-metrics">
+                <div class="cm"><b>4</b><span>Music videos</span></div>
+                <div class="cm"><b>2</b><span>Major labels</span></div>
+                <div class="cm"><b>[XX]</b><span>Total views</span></div>
+              </div>
+            </div>
+            <div class="films">
+              <a class="film" href="https://www.youtube.com/watch?v=qw8Vl2b02Rg" target="_blank" rel="noopener" style="--fb:linear-gradient(135deg,#3b1e3e,#0e0710 70%)">
+                <img src="https://i.ytimg.com/vi/qw8Vl2b02Rg/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">
+                <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+                <span class="meta"><small>Warner Music India</small><strong>maikhana</strong></span>
+              </a>
+              <a class="film" href="https://www.youtube.com/watch?v=l_r5AeJawmE" target="_blank" rel="noopener" style="--fb:linear-gradient(135deg,#1c2a3e,#06090f 70%)">
+                <img src="https://i.ytimg.com/vi/l_r5AeJawmE/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">
+                <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+                <span class="meta"><small>Def Jam India</small><strong>Banda Kaam Ka</strong></span>
+              </a>
+              <a class="film" href="https://www.youtube.com/watch?v=5VjeQf3iJTU" target="_blank" rel="noopener" style="--fb:linear-gradient(135deg,#123a33,#050f0d 70%)">
+                <img src="https://i.ytimg.com/vi/5VjeQf3iJTU/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">
+                <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+                <span class="meta"><small>Vasu Raina · Nanku</small><strong>Naughty Nanku</strong></span>
+              </a>
+              <a class="film" href="https://www.youtube.com/watch?v=hijbJ6dv9cI" target="_blank" rel="noopener" style="--fb:linear-gradient(135deg,#4a1414,#100505 70%)">
+                <img src="https://i.ytimg.com/vi/hijbJ6dv9cI/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">
+                <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+                <span class="meta"><small>Shubh Sharma</small><strong>Mrito Sohore</strong></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CASE 3 -->
+      <article class="case">
+        <div class="glow-card">
+          <div class="case-grid">
+            <div class="case-info">
+              <div class="case-tag"><span class="chip hot">Case 03</span><span class="chip">Films</span><span class="chip">Teasers &amp; trailers</span></div>
+              <h3>Short films &amp; <em>trailers</em></h3>
+              <p>From a feature teaser to short films and dance-film teasers, our camera work in storytelling built to hold attention.</p>
+              <div class="case-metrics">
+                <div class="cm"><b>3</b><span>Film projects</span></div>
+                <div class="cm"><b>4K</b><span>Cinematic finish</span></div>
+                <div class="cm"><b>[XX]</b><span>Total views</span></div>
+              </div>
+            </div>
+            <div class="films three">
+              <a class="film" href="https://www.youtube.com/watch?v=OdPL5CM7LhI" target="_blank" rel="noopener" style="--fb:linear-gradient(135deg,#5c1b3a,#12050b 70%)">
+                <img src="https://i.ytimg.com/vi/OdPL5CM7LhI/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">
+                <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+                <span class="meta"><small>Official teaser trailer</small><strong>Faluda Ladyz Pvt. Ltd</strong></span>
+              </a>
+              <a class="film" href="https://www.youtube.com/watch?v=eJ1dSL-NoVk" target="_blank" rel="noopener" style="--fb:linear-gradient(135deg,#3e2a14,#0f0a05 70%)">
+                <img src="https://i.ytimg.com/vi/eJ1dSL-NoVk/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">
+                <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+                <span class="meta"><small>Short film</small><strong>Fated to Love</strong></span>
+              </a>
+              <a class="film" href="https://www.youtube.com/watch?v=HIkebW-GKhw" target="_blank" rel="noopener" style="--fb:linear-gradient(135deg,#183049,#05090f 70%)">
+                <img src="https://i.ytimg.com/vi/HIkebW-GKhw/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">
+                <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+                <span class="meta"><small>Teaser</small><strong>Streetdancer 4</strong></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <a class="feature-cta reveal" href="#contact">
+      <span class="dash" aria-hidden="true"></span>
+      <span class="eyebrow">Case 04</span>
+      <span class="big">This panel could feature<br><em>your brand.</em></span>
+      <span class="btn btn-primary" style="margin-top:10px">Start a project</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ 3. CONTACT ============ -->
+<section class="sec contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="eyebrow reveal">Work with us</div>
+      <h2 class="h2 reveal">They call it ‘change’ for a <em>reason</em> ;)</h2>
+      <p class="lead reveal" style="margin-top:22px">Tell us about your brand and what you want people to feel. We’ll get back to you within [24 hours].</p>
+      <div class="reach reveal">
+        <a href="mailto:chillarproductions07@gmail.com">
+          <span class="ri"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+          <span><small>Email</small><b>chillarproductions07@gmail.com</b></span>
+        </a>
+        <a href="tel:+919311234921">
+          <span class="ri"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
+          <span><small>Call</small><b>+91 93112 34921 · +91 88514 51020</b></span>
+        </a>
+        <a href="https://wa.me/919311234921" target="_blank" rel="noopener">
+          <span class="ri"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg></span>
+          <span><small>WhatsApp</small><b>Chat with us on WhatsApp</b></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="form-card reveal">
+      <div id="formWrap">
+        <h3>Tell us about your <em>project</em></h3>
+        <p class="hint">Takes under a minute. No scripts to write.</p>
+        <form id="leadForm" novalidate>
+          <div class="row">
+            <label class="field">Your name<input name="name" type="text" placeholder="Full name" autocomplete="name" required><span class="err">Please enter your name</span></label>
+            <label class="field">Brand / company<input name="brand" type="text" placeholder="Brand name" autocomplete="organization"></label>
+          </div>
+          <div class="row">
+            <label class="field">Email<input name="email" type="email" placeholder="you@brand.com" autocomplete="email" required><span class="err">Please enter a valid email</span></label>
+            <label class="field">Phone / WhatsApp<input name="phone" type="tel" placeholder="+91" autocomplete="tel" required><span class="err">Please enter your number</span></label>
+          </div>
+          <fieldset>
+            <legend>What do you need?</legend>
+            <div class="pills" data-group="service">
+              <button type="button" class="pill" aria-pressed="false">Ad film</button>
+              <button type="button" class="pill" aria-pressed="false">Music video</button>
+              <button type="button" class="pill" aria-pressed="false">Short film / trailer</button>
+              <button type="button" class="pill" aria-pressed="false">Reels &amp; social content</button>
+              <button type="button" class="pill" aria-pressed="false">Something else</button>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Budget range</legend>
+            <div class="pills" data-group="budget" data-single>
+              <button type="button" class="pill" aria-pressed="false">[Under ₹X]</button>
+              <button type="button" class="pill" aria-pressed="false">[₹X – ₹Y]</button>
+              <button type="button" class="pill" aria-pressed="false">[₹Y+]</button>
+              <button type="button" class="pill" aria-pressed="false">Not sure yet</button>
+            </div>
+          </fieldset>
+          <label class="field">Tell us a bit more<textarea name="message" placeholder="The idea, timelines, where it will run…"></textarea></label>
+          <button class="btn btn-primary submit" type="submit">Send enquiry
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <p class="note">We’ll only use your details to get back to you.</p>
+        </form>
+      </div>
+      <div class="success" id="success" role="status" aria-live="polite">
+        <div class="tick"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <h4>Got it, <em style="color:#ffcf8f" id="thxName">thank you!</em></h4>
+        <p>Your details are with the Chillar team. We’ll reach out shortly to talk about your story.</p>
+        <button type="button" class="btn btn-ghost" id="again">Send another enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-word" aria-hidden="true">चिल्लर</div>
+    <div class="foot-row">
+      <span class="motto">|| शून्य पर सवार ||</span>
+      <nav aria-label="Footer"><a href="#about">About</a><a href="#work">Work</a><a href="#contact">Contact</a></nav>
+      <span>© 2026 Chillar Productions</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* reveal on scroll */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.15, rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  /* manifesto: split words */
+  var m = document.getElementById('manifesto');
+  var html = '';
+  m.childNodes.forEach(function(n){
+    var isIt = n.nodeType === 1;
+    (n.textContent).split(/(\s+)/).forEach(function(t){
+      if(!t.trim()){ html += t; return; }
+      html += '<span class="mw' + (isIt ? ' it' : '') + '">' + t + '</span>';
+    });
+  });
+  m.innerHTML = html;
+  var words = m.querySelectorAll('.mw');
+
+  /* count up */
+  var counted = false;
+  function countUp(){
+    document.querySelectorAll('[data-count]').forEach(function(el){
+      var end = +el.dataset.count, suf = el.dataset.suffix || '', t0 = null;
+      function step(ts){ if(!t0) t0 = ts; var p = Math.min((ts - t0)/1400, 1); el.textContent = Math.round(end * (1 - Math.pow(1-p,3))) + suf; if(p < 1) requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    });
+  }
+  var statIO = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting && !counted){ counted = true; countUp(); } }); },{threshold:.4});
+  var st = document.querySelector('.stats'); if(st) statIO.observe(st);
+
+  /* scroll-driven effects */
+  var coin = document.getElementById('coin');
+  var nav = document.getElementById('nav');
+  var cases = Array.prototype.slice.call(document.querySelectorAll('.case'));
+  var lastY = 0, ticking = false;
+
+  function onScroll(){
+    var y = window.scrollY, vh = window.innerHeight;
+    /* nav hide on scroll down */
+    if(y > lastY && y > 400) nav.classList.add('hide'); else nav.classList.remove('hide');
+    lastY = y;
+    if(!reduce){
+      /* coin spin + drift */
+      if(coin){ var p = Math.min(y / vh, 1.2); coin.style.transform = 'rotateY(' + (p * 200) + 'deg) translateY(' + (p * 80) + 'px) scale(' + (1 - p * .15) + ')'; }
+      /* manifesto word fill */
+      var r = m.getBoundingClientRect();
+      var prog = (vh * .85 - r.top) / (r.height + vh * .45);
+      var lit = Math.floor(Math.max(0, Math.min(1, prog)) * words.length * 1.05);
+      words.forEach(function(w,i){ w.classList.toggle('on', i < lit); });
+      /* stacking case cards */
+      if(window.innerWidth > 960){
+        cases.forEach(function(c,i){
+          var next = cases[i+1];
+          if(!next){ c.style.transform = ''; c.style.filter = ''; return; }
+          var nr = next.getBoundingClientRect();
+          var cr = c.getBoundingClientRect();
+          var over = Math.max(0, Math.min(1, (cr.bottom - nr.top) / cr.height));
+          c.style.transform = 'scale(' + (1 - over * .06) + ')';
+          c.style.filter = 'brightness(' + (1 - over * .45) + ')';
+        });
+      } else { cases.forEach(function(c){ c.style.transform=''; c.style.filter=''; }); }
+    } else { words.forEach(function(w){ w.classList.add('on'); }); }
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(onScroll); } }, {passive:true});
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  /* glow cards follow pointer */
+  document.querySelectorAll('.glow-card').forEach(function(card){
+    card.addEventListener('pointermove', function(e){
+      var r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  /* pills */
+  document.querySelectorAll('.pills').forEach(function(group){
+    var single = group.hasAttribute('data-single');
+    group.addEventListener('click', function(e){
+      var b = e.target.closest('.pill'); if(!b) return;
+      var on = b.getAttribute('aria-pressed') === 'true';
+      if(single) group.querySelectorAll('.pill').forEach(function(x){ x.setAttribute('aria-pressed','false'); });
+      b.setAttribute('aria-pressed', on && !single ? 'false' : (single && on ? 'false' : 'true'));
+    });
+  });
+
+  /* form */
+  var form = document.getElementById('leadForm');
+  var wrap = document.getElementById('formWrap');
+  var ok = document.getElementById('success');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var valid = true;
+    ['name','email','phone'].forEach(function(n){
+      var inp = form.elements[n], f = inp.closest('.field');
+      var good = inp.value.trim().length > 1 && (n !== 'email' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inp.value.trim()));
+      f.classList.toggle('bad', !good); if(!good) valid = false;
+    });
+    if(!valid){ var first = form.querySelector('.field.bad input'); if(first) first.focus(); return; }
+    /* Hook up a form backend here (Formspree, Google Sheets, CRM webhook). */
+    var nm = form.elements.name.value.trim().split(' ')[0];
+    document.getElementById('thxName').textContent = nm ? nm + '!' : 'thank you!';
+    wrap.style.display = 'none'; ok.classList.add('show');
+  });
+  document.getElementById('again').addEventListener('click', function(){
+    form.reset(); form.querySelectorAll('.pill').forEach(function(p){ p.setAttribute('aria-pressed','false'); });
+    ok.classList.remove('show'); wrap.style.display = '';
+  });
+})();
+</script>
+</body>
+</html>
