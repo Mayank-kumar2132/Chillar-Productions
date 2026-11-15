@@ -1,5 +1,5 @@
 /**
- * Chillar Productions – "Curious? Talk to us" 3-step form (with call scheduling) → Google Sheet
+ * Chillar Productions – "Curious? Talk to us" 3-step form → Google Sheet
  * Paste into: Google Sheet → Extensions → Apps Script (replace everything), Save.
  * Then Deploy → Manage deployments → ✏ Edit → Version: New version → Deploy.
  * (Who has access must stay "Anyone".)
@@ -7,7 +7,7 @@
 
 var HEADERS = [
   'Timestamp', 'What do you do', 'Looking for', 'Name', 'Contact number', 'Email',
-  'Existing channel?', 'Channel link', 'OK with ₹50k/month retainer?', 'Time frame', 'Call date', 'Call time', 'Page'
+  'Existing channel?', 'Channel link', 'OK with ₹50k/month retainer?', 'Time frame', 'Page'
 ];
 
 function doPost(e) {
@@ -29,8 +29,6 @@ function doPost(e) {
       clean(p.channel_link),
       clean(p.retainer),
       clean(p.duration),
-      clean(p.call_date),
-      clean(p.call_slot),
       clean(p.page)
     ]);
     return ContentService.createTextOutput(JSON.stringify({ ok: true }))
