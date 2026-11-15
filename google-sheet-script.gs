@@ -1,12 +1,13 @@
 /**
- * Chillar Productions – website form → Google Sheet
- * Paste this into: Google Sheet → Extensions → Apps Script, then Deploy as a Web app.
- * Every form submission on the website is added as a new row in the first tab.
+ * Chillar Productions – "Curious? Talk to us" 3-step form (with call scheduling) → Google Sheet
+ * Paste into: Google Sheet → Extensions → Apps Script (replace everything), Save.
+ * Then Deploy → Manage deployments → ✏ Edit → Version: New version → Deploy.
+ * (Who has access must stay "Anyone".)
  */
 
 var HEADERS = [
-  'Timestamp', 'Form', 'Name', 'Phone / WhatsApp', 'Email',
-  'Instagram / Brand', 'I am a', 'Needs', 'Message', 'Page'
+  'Timestamp', 'What do you do', 'Looking for', 'Name', 'Contact number', 'Email',
+  'Existing channel?', 'Channel link', 'OK with ₹50k/month retainer?', 'Time frame', 'Call date', 'Call time', 'Page'
 ];
 
 function doPost(e) {
@@ -14,22 +15,22 @@ function doPost(e) {
   lock.waitLock(10000);
   try {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
-    if (sheet.getLastRow() === 0) {
-      sheet.appendRow(HEADERS);
-      sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight('bold');
-      sheet.setFrozenRows(1);
-    }
+    sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]).setFontWeight('bold');
+    sheet.setFrozenRows(1);
     var p = (e && e.parameter) || {};
     sheet.appendRow([
       new Date(),
-      clean(p.form),
+      clean(p.what_do),
+      clean(p.looking_for),
       clean(p.name),
-      "'" + String(p.phone || '').slice(0, 40),   // keep +91 numbers as text
+      "'" + String(p.phone || '').slice(0, 40),
       clean(p.email),
-      clean(p.handle),
-      clean(p.role),
-      clean(p.needs),
-      clean(p.message),
+      clean(p.has_channel),
+      clean(p.channel_link),
+      clean(p.retainer),
+      clean(p.duration),
+      clean(p.call_date),
+      clean(p.call_slot),
       clean(p.page)
     ]);
     return ContentService.createTextOutput(JSON.stringify({ ok: true }))
@@ -39,18 +40,11 @@ function doPost(e) {
   }
 }
 
-// Stops anyone typing a spreadsheet formula into the form, and limits length.
+function doGet() {
+  return ContentService.createTextOutput('Chillar form endpoint is working');
+}
+
 function clean(v) {
   var s = String(v || '').slice(0, 2000);
   return /^[=+\-@]/.test(s) ? "'" + s : s;
-}
-
-// Optional: run once from the editor to create the header row.
-function setupHeaders() {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
-  if (sheet.getLastRow() === 0) {
-    sheet.appendRow(HEADERS);
-    sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight('bold');
-    sheet.setFrozenRows(1);
-  }
 }
