@@ -461,7 +461,7 @@ footer{border-top:1px solid var(--line)}
 
 <script>
 (function(){
-  var SHEET_URL = 'https://script.google.com/macros/s/AKfycbxDXswrYpwa7Pn0ymBdFblY4xw_v6X4GhItd9Va_y_4bKFPVoM5ONte_IrVHnhhLeXPVg/exec';
+  var SHEET_URL = 'https://script.google.com/macros/s/AKfycbzUddTuxCmLt6hKLXt1YbP_3VoRPEkiH802r6KZMbkUeHgsM0Po8RSWeRLRhkdYFB5HnQ/exec';
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* reveal */
@@ -626,6 +626,29 @@ footer{border-top:1px solid var(--line)}
   var form = card.querySelector('form'), body = card.querySelector('.formbody'), done = card.querySelector('.done');
   var steps = form.querySelectorAll('.step'), cur = card.querySelector('.cur'), bar = card.querySelector('.bar i'), errEl = card.querySelector('.send-err');
   var linkBox = form.querySelector('.link-in'), now = 1;
+  var leadId = 'L' + Date.now().toString(36).toUpperCase() + Math.random().toString(36).slice(2,6).toUpperCase();
+  function pick(n){ var r = form.querySelector('input[name="' + n + '"]:checked'); return r ? r.value : ''; }
+  function payload(stage){
+    var d = new URLSearchParams();
+    d.append('lead_id', leadId);
+    d.append('status', stage);
+    d.append('form', card.dataset.form || 'Website');
+    d.append('what_do', form.elements.what_do.value.trim());
+    d.append('looking_for', pick('looking_for'));
+    d.append('name', form.elements.name.value.trim());
+    d.append('phone', form.elements.phone.value.trim());
+    d.append('email', form.elements.email.value.trim());
+    d.append('has_channel', pick('has_channel'));
+    d.append('channel_link', pick('has_channel') === 'Yes' ? form.elements.channel_link.value.trim() : '');
+    d.append('retainer', pick('retainer'));
+    d.append('duration', pick('duration'));
+    d.append('page', location.href);
+    return d;
+  }
+  function send(stage){
+    if(!SHEET_URL || SHEET_URL.indexOf('script.google.com') === -1) return Promise.resolve();
+    return fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', body: payload(stage), keepalive: true });
+  }
 
   form.querySelectorAll('input[name="has_channel"]').forEach(function(r){
     r.addEventListener('change', function(){ linkBox.classList.toggle('show', r.value === 'Yes' && r.checked); if(r.value === 'Yes') form.elements.channel_link.focus(); });
@@ -661,10 +684,11 @@ footer{border-top:1px solid var(--line)}
     var fs = e.target.closest('fieldset'); if(fs) fs.classList.remove('bad');
     var f = e.target.closest('.f'); if(f) f.classList.remove('bad');
   });
-  form.querySelectorAll('.next').forEach(function(b){ b.addEventListener('click', function(){ if(checkStep(now)) go(now + 1); }); });
+  function advance(){ if(checkStep(now)){ send(now === 1 ? 'Step 1 done' : 'Step 2 done').catch(function(){}); go(now + 1); } }
+  form.querySelectorAll('.next').forEach(function(b){ b.addEventListener('click', advance); });
   form.querySelectorAll('.back').forEach(function(b){ b.addEventListener('click', function(){ go(now - 1); }); });
   form.querySelectorAll('input[type=text],input[type=tel],input[type=email],input[type=url]').forEach(function(inp){
-    inp.addEventListener('keydown', function(e){ if(e.key === 'Enter' && now < 3){ e.preventDefault(); if(checkStep(now)) go(now + 1); } });
+    inp.addEventListener('keydown', function(e){ if(e.key === 'Enter' && now < 3){ e.preventDefault(); advance(); } });
   });
 
   form.addEventListener('submit', function(e){
@@ -672,19 +696,6 @@ footer{border-top:1px solid var(--line)}
     for(var i = 1; i <= 3; i++){ if(!checkStep(i)){ go(i); return; } }
     var btn = form.querySelector('button[type="submit"]'), label = btn.innerHTML;
     errEl.classList.remove('show');
-    function val(n){ var r = form.querySelector('input[name="' + n + '"]:checked'); return r ? r.value : ''; }
-    var data = new URLSearchParams();
-    data.append('form', card.dataset.form || 'Website');
-    data.append('what_do', form.elements.what_do.value.trim());
-    data.append('looking_for', val('looking_for'));
-    data.append('name', form.elements.name.value.trim());
-    data.append('phone', form.elements.phone.value.trim());
-    data.append('email', form.elements.email.value.trim());
-    data.append('has_channel', val('has_channel'));
-    data.append('channel_link', val('has_channel') === 'Yes' ? form.elements.channel_link.value.trim() : '');
-    data.append('retainer', val('retainer'));
-    data.append('duration', val('duration'));
-    data.append('page', location.href);
     function showDone(){
       var nm = form.elements.name.value.trim().replace(/\s+/g,' ');
       done.querySelector('.nm').textContent = nm ? nm + '!' : 'friend!';
@@ -693,9 +704,8 @@ footer{border-top:1px solid var(--line)}
       body.style.display = 'none'; done.classList.add('show');
       btn.disabled = false; btn.innerHTML = label; measure();
     }
-    if(!SHEET_URL || SHEET_URL.indexOf('script.google.com') === -1){ showDone(); return; }
     btn.disabled = true; btn.textContent = 'Sending…';
-    fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', body: data })
+    send('Submitted')
       .then(showDone)
       .catch(function(){ btn.disabled = false; btn.innerHTML = label; errEl.classList.add('show'); });
   });
