@@ -745,7 +745,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
     btn.disabled = true; btn.textContent = 'Sending…';
     send('Submitted')
-      .then(showDone)
+      .then(function(){
+        try{ sessionStorage.setItem('chillar_name', form.elements.name.value.trim().replace(/\s+/g,' ')); }catch(e){}
+        if(/claude|usercontent/.test(location.hostname)){ showDone(); return; }
+        setTimeout(function(){ location.href = 'thank-you/'; }, 300);
+      })
       .catch(function(){ btn.disabled = false; btn.innerHTML = label; errEl.classList.add('show'); });
   });
 })();
