@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P3N2966B');</script>
+<!-- End Google Tag Manager -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chillar Productions — Stories Impossible to Ignore</title>
@@ -254,6 +261,10 @@ footer{border-top:1px solid var(--line)}
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P3N2966B"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <header class="nav" id="nav">
   <div class="wrap nav-in">
@@ -673,6 +684,7 @@ footer{border-top:1px solid var(--line)}
     return d;
   }
   function send(stage){
+    try{ window.dataLayer = window.dataLayer || []; window.dataLayer.push({event: stage === 'Submitted' ? 'generate_lead' : 'form_step', form_stage: stage, looking_for: (form.querySelector('input[name="looking_for"]:checked')||{}).value || ''}); }catch(e){}
     if(!SHEET_URL || SHEET_URL.indexOf('script.google.com') === -1) return Promise.resolve();
     return fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', body: payload(stage), keepalive: true });
   }
